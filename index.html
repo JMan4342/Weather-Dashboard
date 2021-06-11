@@ -11,12 +11,15 @@
     <section></section>
 
     <form>
+      <div>
+        <label for="citySearch">Search for a City</label>      
+        <input type="text" id="citySearch" placeholder="Enter City">
+      </div>
+      <div>
         <p>
-            <input id="citySearch" type="text" placeholder="Enter City" />
-          </p>
-          <p>
-            <button id="searchBtn">Search</button>
-          </p>
+          <input type="submit" id="searchBtn" value="Search" onclick="writeCity();"/>
+        </p>
+      </div>
     </form>
 
     <script src="script.js"></script>
