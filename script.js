@@ -78,21 +78,22 @@ function displayCurrent(data) {
 }
 
 function displayForcast(data) {
-  var container = document.querySelector("#multiDayForcast");
-  var example = [
-    "#forcastDate0",
-    "#forcastTempHigh0",
-    "#forcastTempLow0",
-    "#forcastIcon0",
-    "#forcastHumid0",
-    "#forcastWindSpeed0",
-  ];
-
-  // Forcast data will be looped through here, use similar coding as display current
-  for (var i = 0; i < 5; i++) {
+    var container = document.querySelector("#multiDayForcast");
+    var forcastData = [
+      "#forcastDate0",
+      "#forcastTempHigh0",
+      "#forcastTempLow0",
+      "#forcastIcon0",
+      "#forcastHumid0",
+      "#forcastWindSpeed0",
+    ];
+    
+    // Forcast data will be looped through here, use similar coding as display current
+    for (var i = 0; i < 5; i++) {
     var nameEl = document.createElement("p");
-    nameEl.innerText = example[i];
+    nameEl.innerText = forcastData;
     container.appendChild(nameEl);
+
     var { dt, humidity, wind_speed } = data.daily[0];
     var { icon } = data.daily[0].weather[0];
     var { max, min } = data.daily[0].temp;
