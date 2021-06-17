@@ -6,27 +6,29 @@
   </head>
 
   <body>
-    <header></header>
+    <header>
+      <h1>Weather Dashboard</h1>
+    </header>
 
-    
     <form>
       <div>
-        <label for="citySearch">Search for a City</label>      
-        <input type="text" class=cityQuery id="citySearch" placeholder="Enter City">
+        <label for="citySearch">Search for a City</label>
+        <input
+          type="text"
+          class="cityQuery"
+          id="citySearch"
+          placeholder="Enter City"
+        />
       </div>
       <div>
-        <p>
           <button type="button" id="searchBtn" value="Search">Search</button>
-        </p>
       </div>
     </form>
-    
+
     <section>
       <h2>Saved Searches</h2>
-      <ul id="savedCities">
-        <li id="cityLI" class="hidden">""</li>
-      </ul>
-
+      <ul id="savedCities"></ul>
+      <button type="button" id="clearSaved">Clear Previous Results</button>
     </section>
 
     <section>
@@ -41,12 +43,8 @@
     </section>
 
     <h2>Forcast Weather</h2>
-    <div id="multiDayForcast">
-
-    </div>
+    <div id="multiDayForcast"></div>
 
     <script src="script.js"></script>
-
   </body>
-
 </html>

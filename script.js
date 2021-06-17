@@ -1,20 +1,12 @@
 var apiKey = "f57bb5add0d36df3df9a18537e407ac9";
+var cityArray = JSON.parse(localStorage.getItem("searchedCity")) || [];
 
 // Start search from clicking submit button
 document.querySelector("#searchBtn").addEventListener("click", fetchLatLong);
-document.querySelector("#savedCities").addEventListener("click", fetchLatLong2);
-// !!!!!!!!  NEED TO FIX  !!!!!!!!!!
-// Start search from pressing enter key
-// document
-//   .querySelector(".cityQuery")
-//   .addEventListener("keyup", function(event){
-//     if (event.key === "Enter") {
-//         fetchLatLong;}
-//   });
 
 // Capture latitude and longitude of city
 function fetchLatLong(event) {
-  var city = (document.querySelector("#citySearch").value);
+  var city = document.querySelector("#citySearch").value;
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
       city +
@@ -34,47 +26,52 @@ function fetchLatLong(event) {
 
 // Retrieve weather data from saved cities
 function fetchLatLong2(event) {
-    var savedCity = (document.querySelector("#savedCities").value);
-    fetch(
-      "http://api.openweathermap.org/geo/1.0/direct?q=" +
-        savedCity +
-        "&appid=" +
-        apiKey
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        // Send lat and lon info to fetch weather
-        fetchWeather(data);
-        // Send data to save city in local
-        saveCity(data);
-      });
-  }
-
+  console.log(event.target.innerHTML);
+  var savedCity = document.querySelector("#savedCities").value;
+  fetch(
+    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+      event.target.innerHTML +
+      "&appid=" +
+      apiKey
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      // Send lat and lon info to fetch weather
+      fetchWeather(data);
+      // Send data to save city in local
+      saveCity(data);
+    });
+}
 
 // Save city names in local storage and append to ul
 var savedCities = document.querySelector("#savedCities");
 function saveCity(data) {
   var { name } = data[0];
-var cityArray = JSON.parse(localStorage.getItem("searchedCity")) || [];
-if ( !cityArray.includes(name)) cityArray.push(name);
+  if (!cityArray.includes(name)) cityArray.push(name);
+  renderSearched();
+  localStorage.setItem("searchedCity", JSON.stringify(cityArray));
+}
 
-savedCities.innerHTML = "";
-for (let i = 0; i < cityArray.length; i++) {
+// Clear saved cities.
+var clearSaved = document.querySelector("#clearSaved");
+clearSaved.addEventListener("click", function (e) {
+  localStorage.clear();
+  savedCities.innerHTML = "";
+});
+
+function renderSearched() {
+  savedCities.innerHTML = "";
+  for (let i = 0; i < cityArray.length; i++) {
     var cityPar = document.createElement("li");
     let text = document.createTextNode(cityArray[i]);
     cityPar.appendChild(text);
-    savedCities.appendChild(cityPar);  
+    savedCities.appendChild(cityPar);
+    cityPar.addEventListener("click", fetchLatLong2);
+  }
 }
-localStorage.setItem("searchedCity", JSON.stringify(cityArray));
-}
-
-// Click on save cities to get current and forcast weather
-// savedCities.addEventListener("click", fetchLatLong);
-
-// Delete and remove city from saved list.
-// function myFunction(event) {localStorage.removeItem("searchedCity", value)}
+renderSearched();
 
 // Capture current and forcast weather
 function fetchWeather(data) {
@@ -127,7 +124,6 @@ function displayCurrent(data) {
 
 // Display 5-day forcast
 function displayForcast(data) {
-
   //   Pull five days worth of data from API
   var multiDayForcast = document.querySelector("#multiDayForcast");
   multiDayForcast.innerHTML = "";
