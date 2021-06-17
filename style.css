@@ -1,0 +1,16 @@
+li { 
+    background-color: navy;
+    color: white;
+    border: solid;
+    list-style: none;
+    cursor: pointer;
+    width: 115px;
+    height: 30px;
+    padding: 2px;
+    margin: 3px;
+    border-radius: 15px;
+}
+
+.hidden {
+    display: none;
+}

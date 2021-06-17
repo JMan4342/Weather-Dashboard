@@ -2,7 +2,7 @@ var apiKey = "f57bb5add0d36df3df9a18537e407ac9";
 
 // Start search from clicking submit button
 document.querySelector("#searchBtn").addEventListener("click", fetchLatLong);
-
+document.querySelector("#savedCities").addEventListener("click", fetchLatLong2);
 // !!!!!!!!  NEED TO FIX  !!!!!!!!!!
 // Start search from pressing enter key
 // document
@@ -14,7 +14,7 @@ document.querySelector("#searchBtn").addEventListener("click", fetchLatLong);
 
 // Capture latitude and longitude of city
 function fetchLatLong(event) {
-  var city = document.querySelector("#citySearch").value;
+  var city = (document.querySelector("#citySearch").value);
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
       city +
@@ -32,28 +32,49 @@ function fetchLatLong(event) {
     });
 }
 
-// !!!!!!!!  NEED TO FIX  !!!!!!!!!!
-// Save city names in local storage and display on page
+// Retrieve weather data from saved cities
+function fetchLatLong2(event) {
+    var savedCity = (document.querySelector("#savedCities").value);
+    fetch(
+      "http://api.openweathermap.org/geo/1.0/direct?q=" +
+        savedCity +
+        "&appid=" +
+        apiKey
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        // Send lat and lon info to fetch weather
+        fetchWeather(data);
+        // Send data to save city in local
+        saveCity(data);
+      });
+  }
+
+
+// Save city names in local storage and append to ul
 var savedCities = document.querySelector("#savedCities");
 function saveCity(data) {
   var { name } = data[0];
-//   const cityArray = JSON.parse(localStorage.getItem("searchedCity")) || [];
 var cityArray = JSON.parse(localStorage.getItem("searchedCity")) || [];
 if ( !cityArray.includes(name)) cityArray.push(name);
 
 savedCities.innerHTML = "";
 for (let i = 0; i < cityArray.length; i++) {
-    var cityPar = document.createElement("p");
+    var cityPar = document.createElement("li");
     let text = document.createTextNode(cityArray[i]);
     cityPar.appendChild(text);
-    savedCities.appendChild(cityPar);
-    
-    
+    savedCities.appendChild(cityPar);  
 }
-console.log(cityArray);
 localStorage.setItem("searchedCity", JSON.stringify(cityArray));
 }
 
+// Click on save cities to get current and forcast weather
+// savedCities.addEventListener("click", fetchLatLong);
+
+// Delete and remove city from saved list.
+// function myFunction(event) {localStorage.removeItem("searchedCity", value)}
 
 // Capture current and forcast weather
 function fetchWeather(data) {
@@ -119,7 +140,7 @@ function displayForcast(data) {
     //   Format date from Unix format
     var formatDate =
       date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
-    console.log(formatDate);
+    // console.log(formatDate);
 
     // Display forcast weather in browswer
     var forcastDate = document.createElement("p");
@@ -144,6 +165,6 @@ function displayForcast(data) {
       forcastWindSpeed
     );
 
-    console.log(max, min, humidity, wind_speed, icon);
+    // console.log(max, min, humidity, wind_speed, icon);
   }
 }
