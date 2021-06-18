@@ -10,40 +10,43 @@
       <h1>Weather Dashboard</h1>
     </header>
 
-    <form>
-      <div>
-        <label for="citySearch">Search for a City</label>
-        <input
-          type="text"
-          class="cityQuery"
-          id="citySearch"
-          placeholder="Enter City"
-        />
-      </div>
-      <div>
+  <section>
+    <div id="sideSearch">
+      <form>
+        <div id="searchArea">
+          <label for="citySearch">Search for a City</label>
+          <input
+            type="text"
+            class="cityQuery"
+            id="citySearch"
+            placeholder="Enter City"
+          />
           <button type="button" id="searchBtn" value="Search">Search</button>
+        </div>
+      </form>
+      <div id="cityRecall">
+        <h2>Saved Searches</h2>
+        <ul id="savedCities"></ul>
+        <button type="button" id="clearSaved">Clear Previous Results</button>
       </div>
-    </form>
+    </div>
 
-    <section>
-      <h2>Saved Searches</h2>
-      <ul id="savedCities"></ul>
-      <button type="button" id="clearSaved">Clear Previous Results</button>
-    </section>
-
-    <section>
-      <h1>Current Weather</h1>
-      <p id="currentCity">City</p>
-      <p id="currentDate">Date</p>
-      <p id="currentTemp">Temperature</p>
-      <img src="" id="currentIcon" />
-      <p id="currentHumid">Humidity</p>
-      <p id="currentWindSpeed">Wind Speed</p>
-      <p id="currentUVI">UV Index</p>
-    </section>
-
-    <h2>Forcast Weather</h2>
-    <div id="multiDayForcast"></div>
+    <div id="weatherReturn">
+      <div id="currentWeather">
+        <h2>Current Weather</h2>
+        <p id="currentCity">City</p>
+        <p id="currentDate">Date</p>
+        <p id="currentTemp">Temperature</p>
+        <img src="" id="currentIcon" />
+        <p id="currentHumid">Humidity</p>
+        <p id="currentWindSpeed">Wind Speed</p>
+        <p id="currentUVI">UV Index</p>
+      </div>
+      <div id="forcastWeather">
+        <h2>Forcast Weather</h2>
+        <div id="multiDayForcast"></div>
+    </div>
+  </section>
 
     <script src="script.js"></script>
   </body>

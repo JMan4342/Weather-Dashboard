@@ -1,16 +1,83 @@
-li { 
+section {
+    display: flex;
+    flex-direction: row;
+}
+
+h1, 
+h2 {
+    text-align: center;
+}
+
+#sideSearch {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+#searchArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#cityRecall {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#savedCities p { 
     background-color: navy;
     color: white;
     border: solid;
     list-style: none;
     cursor: pointer;
-    width: 115px;
+    width: 160px;
     height: 30px;
     padding: 2px;
-    margin: 3px;
+    padding-top: 4px;
     border-radius: 15px;
+    text-align: center;
+    font-size: 24px;
+    margin-block: auto;
+}
+
+#weatherReturn {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+#currentWeather {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    width: auto;
+}
+
+#currentWeather img {
+    width: 75px;
+    height: 75px;
+}
+
+#forcastWeather {
+    display: flex;
+    flex-direction: column;
+}
+
+#multiDayForcast {
+    border: solid;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+
+#multiDayForcast img {
+    width: 50px;
+    height: 50px;
 }
 
 .hidden {
     display: none;
 }
+

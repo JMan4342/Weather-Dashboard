@@ -26,7 +26,7 @@ function fetchLatLong(event) {
 
 // Retrieve weather data from saved cities
 function fetchLatLong2(event) {
-  console.log(event.target.innerHTML);
+//   console.log(event.target.innerHTML);
   var savedCity = document.querySelector("#savedCities").value;
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -45,7 +45,7 @@ function fetchLatLong2(event) {
     });
 }
 
-// Save city names in local storage and append to ul
+// Save city names in local storage
 var savedCities = document.querySelector("#savedCities");
 function saveCity(data) {
   var { name } = data[0];
@@ -54,17 +54,11 @@ function saveCity(data) {
   localStorage.setItem("searchedCity", JSON.stringify(cityArray));
 }
 
-// Clear saved cities.
-var clearSaved = document.querySelector("#clearSaved");
-clearSaved.addEventListener("click", function (e) {
-  localStorage.clear();
-  savedCities.innerHTML = "";
-});
-
+// Append saved search cities, and retrieve weather data.
 function renderSearched() {
   savedCities.innerHTML = "";
   for (let i = 0; i < cityArray.length; i++) {
-    var cityPar = document.createElement("li");
+    var cityPar = document.createElement("p");
     let text = document.createTextNode(cityArray[i]);
     cityPar.appendChild(text);
     savedCities.appendChild(cityPar);
@@ -73,13 +67,21 @@ function renderSearched() {
 }
 renderSearched();
 
+// Clear saved cities.
+var clearSaved = document.querySelector("#clearSaved");
+clearSaved.addEventListener("click", function (e) {
+  localStorage.clear();
+  savedCities.innerHTML = "";
+});
+
+
 // Capture current and forcast weather
 function fetchWeather(data) {
   var { lat, lon } = data[0];
   var { name } = data[0];
   document.querySelector("#currentCity").innerText = name;
 
-  console.log(lat, lon);
+//   console.log(lat, lon);
 
   fetch(
     "https://api.openweathermap.org/data/2.5/onecall?lat=" +
@@ -100,16 +102,17 @@ function fetchWeather(data) {
     });
 }
 
+// Display current weather.
 function displayCurrent(data) {
   var { dt, temp, humidity, wind_speed, uvi } = data.current;
   var { icon } = data.current.weather[0];
   var date = new Date(dt * 1000);
-  console.log(date);
+//   console.log(date);
   var formatDate =
     date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
-  console.log(formatDate);
+//   console.log(formatDate);
 
-  console.log(temp, humidity, wind_speed, uvi, icon);
+//   console.log(temp, humidity, wind_speed, uvi, icon);
 
   document.querySelector("#currentDate").innerText = formatDate;
   document.querySelector("#currentIcon").src =
@@ -136,7 +139,6 @@ function displayForcast(data) {
     //   Format date from Unix format
     var formatDate =
       date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
-    // console.log(formatDate);
 
     // Display forcast weather in browswer
     var forcastDate = document.createElement("p");
@@ -161,6 +163,5 @@ function displayForcast(data) {
       forcastWindSpeed
     );
 
-    // console.log(max, min, humidity, wind_speed, icon);
   }
 }
