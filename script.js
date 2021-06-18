@@ -2,7 +2,7 @@ var apiKey = "f57bb5add0d36df3df9a18537e407ac9";
 var cityArray = JSON.parse(localStorage.getItem("searchedCity")) || [];
 
 // Start search from clicking submit button
-document.querySelector("#searchBtn").addEventListener("click", fetchLatLong);
+document.querySelector("#searchBtn").addEventListener("click", fetchLatLong2);
 
 // Capture latitude and longitude of city
 function fetchLatLong(event) {
@@ -26,7 +26,6 @@ function fetchLatLong(event) {
 
 // Retrieve weather data from saved cities
 function fetchLatLong2(event) {
-//   console.log(event.target.innerHTML);
   var savedCity = document.querySelector("#savedCities").value;
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -74,14 +73,11 @@ clearSaved.addEventListener("click", function (e) {
   savedCities.innerHTML = "";
 });
 
-
 // Capture current and forcast weather
 function fetchWeather(data) {
   var { lat, lon } = data[0];
   var { name } = data[0];
   document.querySelector("#currentCity").innerText = name;
-
-//   console.log(lat, lon);
 
   fetch(
     "https://api.openweathermap.org/data/2.5/onecall?lat=" +
@@ -107,12 +103,8 @@ function displayCurrent(data) {
   var { dt, temp, humidity, wind_speed, uvi } = data.current;
   var { icon } = data.current.weather[0];
   var date = new Date(dt * 1000);
-//   console.log(date);
   var formatDate =
     date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
-//   console.log(formatDate);
-
-//   console.log(temp, humidity, wind_speed, uvi, icon);
 
   document.querySelector("#currentDate").innerText = formatDate;
   document.querySelector("#currentIcon").src =
@@ -122,14 +114,13 @@ function displayCurrent(data) {
     "Humidity: " + humidity + "%";
   document.querySelector("#currentWindSpeed").innerText =
     "Wind Speed: " + wind_speed + " MPH";
-  document.querySelector("#currentUVI").innerText = "UV Inded: " + uvi;
+  document.querySelector("#currentUVI").innerText = "UV Index: " + uvi;
 }
 
 // Display 5-day forcast
 function displayForcast(data) {
   //   Pull five days worth of data from API
   var multiDayForcast = document.querySelector("#multiDayForcast");
-  multiDayForcast.innerHTML = "";
   for (let i = 0; i < 5; i++) {
     var { dt, humidity, wind_speed } = data.daily[i];
     var { icon } = data.daily[i].weather[0];
@@ -140,28 +131,16 @@ function displayForcast(data) {
     var formatDate =
       date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
 
-    // Display forcast weather in browswer
-    var forcastDate = document.createElement("p");
-    forcastDate.innerText = formatDate;
-    var forcastIcon = document.createElement("img");
-    forcastIcon.src = "http://openweathermap.org/img/wn/" + icon + ".png";
-    var forcastTempHigh = document.createElement("p");
-    forcastTempHigh.innerHTML = "High: " + max + "&#8457;";
-    var forcastTempLow = document.createElement("p");
-    forcastTempLow.innerHTML = "Low: " + min + "&#8457;";
-    var forcastHumid = document.createElement("p");
-    forcastHumid.innerText = "Humidity: " + humidity + "%";
-    var forcastWindSpeed = document.createElement("p");
-    forcastWindSpeed.innerText = "Wind Speed: " + wind_speed + " MPH";
-
-    multiDayForcast.append(
-      forcastDate,
-      forcastIcon,
-      forcastTempHigh,
-      forcastTempLow,
-      forcastHumid,
-      forcastWindSpeed
-    );
-
+    document.querySelector("#forcastDate" + [i]).innerText = formatDate;
+    document.querySelector("#forcastIcon" + [i]).src =
+      "http://openweathermap.org/img/wn/" + icon + ".png";
+    document.querySelector("#forcastHigh" + [i]).innerHTML =
+      "High: " + max + "&#8457;";
+    document.querySelector("#forcastLow" + [i]).innerHTML =
+      "Low: " + min + "&#8457;";
+    document.querySelector("#forcastHumid" + [i]).innerText =
+      "Humidity: " + humidity + "%";
+    document.querySelector("#forcastWindSpeed" + [i]).innerText =
+      "Wind Speed: " + wind_speed + " MPH";
   }
 }

@@ -1,83 +1,178 @@
 section {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
-h1, 
+h1,
 h2 {
-    text-align: center;
+  text-align: center;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 32px;
 }
 
 #sideSearch {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
 }
 
 #searchArea {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid;
+  border-radius: 15px;
+  margin-top: 90px;
+  background: ivory;
+}
+
+label {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+#citySearch {
+  width: 240px;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#searchBtn {
+  width: 205px;
+  height: 36px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 25px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 #cityRecall {
-    display: flex;
-    flex-direction: column;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid;
+  margin-top: 29px;
+  border-radius: 15px;
+  background: ivory;
 }
 
+#savedCities p {
+  background-color: navy;
+  color: white;
+  border: solid;
+  list-style: none;
+  cursor: pointer;
+  width: 170px;
+  height: 30px;
+  padding: 3px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 24px;
+  margin-right: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
-#savedCities p { 
-    background-color: navy;
-    color: white;
-    border: solid;
-    list-style: none;
-    cursor: pointer;
-    width: 160px;
-    height: 30px;
-    padding: 2px;
-    padding-top: 4px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 24px;
-    margin-block: auto;
+#clearSaved {
+  width: 205px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 25px;
 }
 
 #weatherReturn {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
 }
 
 #currentWeather {
-    display: flex;
-    flex-direction: column;
-    border: solid;
-    width: auto;
+  display: flex;
+  flex-direction: column;
+  border: solid;
+  width: auto;
+  border-radius: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: ivory;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#currentCity {
+  font-size: 36px;
+  text-align: center;
+}
+
+#currentDate {
+  font-size: 28px;
 }
 
 #currentWeather img {
-    width: 75px;
-    height: 75px;
+  width: 100px;
+  height: 100px;
+  border: solid grey;
+  background-color: white;
+  border-radius: 30px;
 }
 
 #forcastWeather {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-#multiDayForcast {
-    border: solid;
-    display: flex;
-    flex-direction: column;
-    height: 200px;
+#multiDayForcast0,
+#multiDayForcast1,
+#multiDayForcast2,
+#multiDayForcast3,
+#multiDayForcast4 {
+  border: solid;
+  border-radius: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: ivory;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-#multiDayForcast img {
-    width: 50px;
-    height: 50px;
+#multiDayForcast0 img,
+#multiDayForcast1 img,
+#multiDayForcast2 img,
+#multiDayForcast3 img,
+#multiDayForcast4 img {
+  width: 50px;
+  height: 50px;
+  border: solid grey;
+  background-color: white;
+  border-radius: 30px;
+}
+
+#forcastDate0,
+#forcastDate1,
+#forcastDate2,
+#forcastDate3,
+#forcastDate4 {
+  font-size: 20px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
-
