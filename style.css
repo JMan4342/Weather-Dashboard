@@ -136,18 +136,18 @@ label {
 #currentIcon,
 #currentHumid,
 #currentWindSpeed {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 #currentUVI {
-    padding-top: 9px;
-    background-color: ivory;
-    width: 160px;
-    height: 30px;
-    text-align: center;
-    justify-content: center;
-    border-radius: 25px;
-    margin-left: 10px;
+  padding-top: 9px;
+  background-color: ivory;
+  width: 160px;
+  height: 30px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 25px;
+  margin-left: 10px;
 }
 
 #forcastWeather {

@@ -8,7 +8,7 @@ document.querySelector("#searchBtn").addEventListener("click", fetchLatLong);
 function fetchLatLong(event) {
   var city = document.querySelector("#citySearch").value;
   fetch(
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
       city +
       "&appid=" +
       apiKey
@@ -28,7 +28,7 @@ function fetchLatLong(event) {
 function fetchLatLong2(event) {
   var savedCity = document.querySelector("#savedCities").value;
   fetch(
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
       event.target.innerHTML +
       "&appid=" +
       apiKey
@@ -116,19 +116,22 @@ function displayCurrent(data) {
     "Wind Speed: " + wind_speed + " MPH";
   document.querySelector("#currentUVI").innerText = "UV Index: " + uvi;
 
-//   function uviColor(uvi) {
-      var uviBG = document.querySelector("#currentUVI");
-      if (uvi < 3){
-      (document.querySelector("#currentUVI").style.backgroundColor = "green")};
-      if (uvi > 2 && uvi < 6){
-      (document.querySelector("#currentUVI").style.backgroundColor = "yellow")};
-      if (uvi > 5 && uvi < 8){
-      (document.querySelector("#currentUVI").style.backgroundColor = "orange")};
-      if (uvi > 7 && uvi < 11){
-      (document.querySelector("#currentUVI").style.backgroundColor = "red")};
-      if (uvi > 10){
-      (document.querySelector("#currentUVI").style.backgroundColor = "purple")};
-//   }
+  if (uvi < 3) {
+    document.querySelector("#currentUVI").style.backgroundColor = "green";
+  }
+  if (uvi > 2 && uvi < 6) {
+    document.querySelector("#currentUVI").style.backgroundColor = "yellow";
+  }
+  if (uvi > 5 && uvi < 8) {
+    document.querySelector("#currentUVI").style.backgroundColor = "orange";
+  }
+  if (uvi > 7 && uvi < 11) {
+    document.querySelector("#currentUVI").style.backgroundColor = "red";
+  }
+  if (uvi > 10) {
+    document.querySelector("#currentUVI").style.backgroundColor = "purple";
+  }
+  //   }
 }
 
 // Display 5-day forcast
