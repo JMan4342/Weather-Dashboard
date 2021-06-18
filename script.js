@@ -2,7 +2,7 @@ var apiKey = "f57bb5add0d36df3df9a18537e407ac9";
 var cityArray = JSON.parse(localStorage.getItem("searchedCity")) || [];
 
 // Start search from clicking submit button
-document.querySelector("#searchBtn").addEventListener("click", fetchLatLong2);
+document.querySelector("#searchBtn").addEventListener("click", fetchLatLong);
 
 // Capture latitude and longitude of city
 function fetchLatLong(event) {
@@ -115,6 +115,20 @@ function displayCurrent(data) {
   document.querySelector("#currentWindSpeed").innerText =
     "Wind Speed: " + wind_speed + " MPH";
   document.querySelector("#currentUVI").innerText = "UV Index: " + uvi;
+
+//   function uviColor(uvi) {
+      var uviBG = document.querySelector("#currentUVI");
+      if (uvi < 3){
+      (document.querySelector("#currentUVI").style.backgroundColor = "green")};
+      if (uvi > 2 && uvi < 6){
+      (document.querySelector("#currentUVI").style.backgroundColor = "yellow")};
+      if (uvi > 5 && uvi < 8){
+      (document.querySelector("#currentUVI").style.backgroundColor = "orange")};
+      if (uvi > 7 && uvi < 11){
+      (document.querySelector("#currentUVI").style.backgroundColor = "red")};
+      if (uvi > 10){
+      (document.querySelector("#currentUVI").style.backgroundColor = "purple")};
+//   }
 }
 
 // Display 5-day forcast
