@@ -12,7 +12,7 @@ In this assignment, I created a weather dashboard app that will allow the user t
 
 ## Image
 
-Below are images of my completed quiz on JavaScript page.
+Below are images of my completed weather dashboard app page.
 
 ![Weather dashboard start screen](./images/weather_start.jpeg)
 ![Initial search results](./images/initial_search_results.jpeg)
@@ -24,7 +24,7 @@ Below are images of my completed quiz on JavaScript page.
 
 ## Resources
 
-I utilized the following sites to assist in creating my JavaScript quiz.
+I utilized the following sites to assist in creating my weather dashboard app.
 * https://www.w3schools.com/
 * https://developer.mozilla.org/
 * https://webdesign.tutsplus.com
