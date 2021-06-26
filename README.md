@@ -37,3 +37,10 @@ I utilized the following sites to assist in creating my weather dashboard app.
 You can find my weather dashboard page at the following:
 
 * https://jman4342.github.io/Weather-Dashboard/
+
+---
+
+## Questions
+  If you have any questions, I can be reached on my GitHub at [JMan4342](https://github.com/JMan4342).
+
+  You can also reach me by email at manning.joseph.4342@gmail.com.
